@@ -1,6 +1,5 @@
 import heapq
 
-# ---------- Union-Find for Kruskal ----------
 class UnionFind:
     def __init__(self, n):
         self.parent = list(range(n))
@@ -8,7 +7,7 @@ class UnionFind:
 
     def find(self, x):
         if self.parent[x] != x:
-            self.parent[x] = self.find(self.parent[x])  # Path Compression
+            self.parent[x] = self.find(self.parent[x])  
         return self.parent[x]
 
     def union(self, x, y):
@@ -29,9 +28,8 @@ class UnionFind:
         return True
 
 
-# ---------- Kruskal Algorithm ----------
 def kruskal(n, edges):
-    edges.sort()  # Sort by weight
+    edges.sort()  
 
     uf = UnionFind(n)
     mst = []
@@ -48,7 +46,6 @@ def kruskal(n, edges):
     return mst, cost
 
 
-# ---------- Prim Algorithm ----------
 def prim(n, adj, start=0):
     INF = float("inf")
 
@@ -83,7 +80,7 @@ def prim(n, adj, start=0):
     return mst, cost
 
 
-# ---------- Graph Definition ----------
+
 n = 7
 
 edges = [
@@ -106,13 +103,10 @@ for w, u, v in edges:
     adj.setdefault(u, []).append((v, w))
     adj.setdefault(v, []).append((u, w))
 
-
-# ---------- Run Algorithms ----------
 k_mst, k_cost = kruskal(n, edges[:])
 p_mst, p_cost = prim(n, adj)
 
 
-# ---------- Output ----------
 print("=== Kruskal's MST ===")
 for u, v, w in k_mst:
     print(f"Edge ({u} - {v})  Weight: {w}")
