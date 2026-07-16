@@ -61,8 +61,7 @@ def performance_analysis():
     for size in sizes:
         arr = sorted(random.sample(range(size * 10), size))
         target = random.choice(arr)
-
-        # Interpolation Search
+        
         start = time.perf_counter()
         for _ in range(100):
             idx_is, comp_is = interpolation_search(arr, target)
@@ -77,7 +76,6 @@ def performance_analysis():
         print(f"{size:>10} {is_time:>14.4f} {bs_time:>14.4f} {comp_is:>16} {comp_bs:>16}")
 
 
-# Main Program
 arr = [2, 5, 10, 15, 23, 35, 48, 60, 75, 90, 105, 120]
 target = 35
 
